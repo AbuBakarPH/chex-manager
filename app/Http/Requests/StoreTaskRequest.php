@@ -24,6 +24,7 @@ class StoreTaskRequest extends FormRequest
         return [
             'name'                  => 'required',
             'category_id'           => 'required|exists:categories,id',
+            'org_role_id'           => 'required|exists:organizational_roles,id',
             // 'sub_category_id'   => 'required|exists:categories,id',
             'priority'              => 'required|string|max:255',
             'status'                => 'required|in:active,in-active,draft',
@@ -36,9 +37,9 @@ class StoreTaskRequest extends FormRequest
     {
         return [
             'category_id.exists' => 'The selected category is invalid',
-            // 'sub_category_id.exists' => 'The selected sub category is invalid',
+            'org_role_id.exists' => 'The selected role is invalid',
             'category_id.required' => 'The category field is required.',
-            // 'sub_category_id.required' => 'The sub category field is required.',
+            'org_role_id.required' => 'The role field is required.',
         ];
     }
 }

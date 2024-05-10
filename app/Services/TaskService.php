@@ -70,7 +70,8 @@ class TaskService
             'sub_category',
             'sections',
             'sections.questions',
-            'mythBusters'
+            'mythBusters',
+            'org_role',
         ]);
 
 

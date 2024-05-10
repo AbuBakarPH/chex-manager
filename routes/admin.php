@@ -27,10 +27,12 @@ use App\Http\Controllers\AdminControllers\CategoryController;
 use App\Http\Controllers\AdminControllers\CompanyIpController;
 use App\Http\Controllers\AdminControllers\Auth\AdminController;
 use App\Http\Controllers\AdminControllers\PackagePlanController;
+use App\Http\Controllers\AdminControllers\SubCategoryController;
 use App\Http\Controllers\ManagerControllers\DashboardController;
 use App\Http\Controllers\ManagerControllers\PermissionController;
 use App\Http\Controllers\ManagerControllers\RiskConfigController;
 use App\Http\Controllers\ManagerControllers\NotificationController;
+use App\Http\Controllers\OrganizationalRoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +139,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
 
 
         Route::apiResources([
+            'organizational_roles'  => OrganizationalRoleController::class,
             'category'  => CategoryController::class,
             'company'   => CompanyController::class,
             'media' => MediaController::class,
