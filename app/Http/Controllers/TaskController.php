@@ -41,7 +41,7 @@ class TaskController extends Controller
     {
 
         $checklist = Task::with([
-            'category', 'sub_category', 'mythBusters',
+            'category', 'sub_category', 'mythBusters', 'org_role',
             // 'sections', 'sections.questions',
             'sections.questions.risk.assignees',
             'sections.questions.risk.conversations',

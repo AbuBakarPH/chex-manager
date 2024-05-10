@@ -17,7 +17,18 @@ class Task extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'category_id', 'sub_category_id', 'ref_id', 'name', 'priority', 'status', 'description', 'type', 'company_id', 'created_by', 'admin_status'
+        'category_id', 
+        'sub_category_id',
+        'ref_id',
+        'name',
+        'priority',
+        'status',
+        'description',
+        'type',
+        'company_id',
+        'created_by',
+        'admin_status',
+        'org_role_id',
     ];
 
     protected $casts = [
@@ -37,6 +48,11 @@ class Task extends Model
         return Attribute::make(
             set: fn (string $value) => ucfirst($value),
         );
+    }
+    
+    public function org_role()
+    {
+        return $this->belongsTo(OrganizationalRole::class, 'org_role_id');
     }
     
     public function category()

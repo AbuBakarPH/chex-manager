@@ -14,6 +14,7 @@ use App\Models\Schedule;
 use App\Models\Task;
 use App\Models\User;
 use App\Observers\PlanableObserver;
+use App\Services\Admin\SubCategoryService;
 use App\Services\RoleService;
 use App\Services\TeamService;
 use App\Services\UserService;
@@ -44,7 +45,10 @@ use App\Services\Interfaces\SubscriptionInterface;
 use App\Services\Interfaces\CompanyServiceInterface;
 use App\Services\Interfaces\CategoryServiceInterface;
 use App\Services\Interfaces\CompanyIpAddressInterface;
+use App\Services\Interfaces\OrganizationalRoleInterface;
+use App\Services\Interfaces\SubCategoryServiceInterface;
 use App\Services\Interfaces\ThemeSettingInterface;
+use App\Services\OrganizationalRoleService;
 use App\Services\ThemeSettingService;
 
 class AppServiceProvider extends ServiceProvider
@@ -55,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
+        $this->app->bind(OrganizationalRoleInterface::class, OrganizationalRoleService::class);
         $this->app->bind(CompanyServiceInterface::class, CompanyService::class);
         $this->app->bind(MediaServiceInterface::class, MediaService::class);
         $this->app->bind(RoleInterface::class, RoleService::class);
