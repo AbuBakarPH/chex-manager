@@ -54,7 +54,7 @@ class UserService implements UserInterface
             ]);
         }
 
-        $data = User::with(['login_history', 'roles', 'photo']);
+        $data = User::with(['login_history', 'roles', 'photo', 'team']);
 
         if (count($roles)) {
             $data = $data->role($roles);

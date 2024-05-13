@@ -47,6 +47,7 @@ class User extends Authenticatable
         'status',
         'avatar_id',
         'otp_count',
+        'team_id',
     ];
     protected $dates = ['deleted_at'];
 
@@ -110,7 +111,7 @@ class User extends Authenticatable
     {
         $query->where('status', $status);
     }
-    
+
     public function time_logs()
     {
         return $this->hasMany(CheckIn::class);
@@ -142,5 +143,8 @@ class User extends Authenticatable
         );
     }
 
-    
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
 }

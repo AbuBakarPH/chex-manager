@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('config_id');
             $table->foreignId('user_id');
+            $table->foreignId('team_id');
             $table->enum('type', ['staff', 'approver'])->default('staff');
             $table->timestamps();
         });

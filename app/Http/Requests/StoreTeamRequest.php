@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidUserIds;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -34,16 +35,24 @@ class StoreTeamRequest extends FormRequest
                 })->ignore($id),
             ],
             'is_active' => 'required',
-            'user_id'   => 'required|array',
+            'user_id' => ['required', 'array', new ValidUserIds],
             'start_time'=> 'required',
             'end_time'  => 'required|after:start_time',
+            'org_role_id' => 'required|exists:organizational_roles,id',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 
     public function messages()
     {
         return [
-            'user_id.required' => 'Please select the user.',
+            'user_id.required' => 'User ID is required.',
+            'user_id.array' => 'User ID must be an array.',
+            'user_id.*' => 'Invalid user ID.',
+            'category_id.required' => 'Category is required',
+            'category_id.exists' => 'Category Id is invalid',
+            'org_role_id.required' => 'Role is required',
+            'org_role_id.exists' => 'Role Id is invalid',
         ];
     }
 }

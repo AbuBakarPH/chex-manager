@@ -35,7 +35,7 @@ class TeamService implements TeamInterface
             array_push($where, $status);
         }
 
-        $data = Team::with(['users', 'users.roles', 'users.photo']);
+        $data = Team::with(['users', 'users.roles', 'users.photo', 'role', 'category']);
         $data = $this->generalService->handleWhere($data, $where);
         $data = $this->generalService->handleSearch($request['searchText'], $data, ['title'], 'is_active');
 

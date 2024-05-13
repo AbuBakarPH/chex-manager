@@ -19,6 +19,8 @@ return new class extends Migration
             $table->boolean('is_active');
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
+            $table->integer('org_role_id')->comment('organizational_role_id')->nullable()->constrained();
+            $table->foreignId('category_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

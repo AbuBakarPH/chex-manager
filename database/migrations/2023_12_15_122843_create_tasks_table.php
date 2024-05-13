@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('company_id')->nullable();
             $table->integer('sub_category_id')->nullable();
-            $table->integer('org_role_id')->comment('organizational_role_id')->nullable();
+            $table->integer('org_role_id')->comment('organizational_role_id')->nullable()->constrained();
             $table->integer('ref_id');
             $table->string('name');
             $table->string('priority');
             $table->string('status', 50);
             $table->longText('description')->nullable();
             $table->string('type');
+            $table->string('frequency', 15)->nullable();
             $table->integer('created_by')->nullable();
             $table->string('admin_status')->default('pending');
             $table->timestamps();
