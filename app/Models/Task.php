@@ -29,6 +29,7 @@ class Task extends Model
         'created_by',
         'admin_status',
         'org_role_id',
+        'frequency',
     ];
 
     protected $casts = [

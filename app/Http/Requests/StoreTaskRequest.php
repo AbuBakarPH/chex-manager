@@ -30,6 +30,7 @@ class StoreTaskRequest extends FormRequest
             'status'                => 'required|in:active,in-active,draft',
             'description'           => 'required|string',
             'myth_buster_ids.*'     => 'required|integer',
+            'frequency'     => 'required',
         ];
     }
 

@@ -35,17 +35,17 @@ class StoreUserRequest extends FormRequest
             // 'category_id'   => 'nullable',
             // 'sub_category_id'=> 'nullable',
             'role'          => 'required',
-            'org_role'      => 'nullable',
+            // 'org_role'      => 'nullable',
             'status'      => 'required',
+            'team_id' => 'required|exists:teams,id',
         ];
     }
     
-    // public function messages()
-    // {
-    //     return [
-    //         // 'cnic.required' => 'The id is required.',
-    //         'category_id.required' => 'The department is required.',
-    //         'sub_category_id.required' => 'The sub department is required.',
-    //     ];
-    // }
+    public function messages()
+    {
+        return [
+            'team_id.required' => 'Team Id id required.',
+            'team_id.exists' => 'Team Id is invalid.',
+        ];
+    }
 }

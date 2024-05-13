@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('repeat_start_dd'); //(day or date)
             $table->text('exceptional_days')->nullable(); //(day or date)
             $table->text('exceptional_dates')->nullable(); //(day or date)
+            $table->boolean('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
